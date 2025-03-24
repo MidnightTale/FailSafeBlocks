@@ -88,7 +88,7 @@ function Generate-LanguageEntries {
     }
     
     # Add creative tab
-    $langEntries["itemGroup.failsafeblocks.placeholder_tab"] = "FailSafe Blocks"
+    $langEntries["itemGroup.failsafeblocks"] = "FailSafe Blocks"
     
     $langContent = $langEntries | ConvertTo-Json
     $langPath = "$resourceDir/lang/en_us.json"

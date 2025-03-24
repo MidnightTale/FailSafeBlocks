@@ -15,8 +15,3 @@ Fix your broken worlds! This mod replaces missing blocks with colorful placehold
 2. Load your world that has missing blocks
 3. The mod will automatically replace missing blocks with placeholders
 4. You can mine and replace the placeholders like normal blocks
-
-## Notes
-
-- Each missing block type gets its own placeholder color (based on hash)
-- Safer than vanilla Minecraft which crashes or uses random blocks

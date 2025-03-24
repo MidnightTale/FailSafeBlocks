@@ -213,25 +213,25 @@ public class MixinChunkSerializer {
         // Process the NBT data to find palette entries for blocks
         if (!tag.contains("sections", Tag.TAG_LIST)) return;
         
-        ListTag sections = tag.getList("sections", Tag.TAG_COMPOUND);
+            ListTag sections = tag.getList("sections", Tag.TAG_COMPOUND);
         int replacedBlocks = 0;
         Set<String> missingBlockIds = failSafeBlocks$findMissingBlockIdsFromNBT(tag);
-        
-        for (int i = 0; i < sections.size(); i++) {
-            CompoundTag section = sections.getCompound(i);
             
+            for (int i = 0; i < sections.size(); i++) {
+                CompoundTag section = sections.getCompound(i);
+                
             if (!section.contains("block_states", Tag.TAG_COMPOUND)) continue;
-            CompoundTag blockStates = section.getCompound("block_states");
-            
+                    CompoundTag blockStates = section.getCompound("block_states");
+                    
             if (!blockStates.contains("palette", Tag.TAG_LIST)) continue;
-            ListTag palette = blockStates.getList("palette", Tag.TAG_COMPOUND);
-            
-            for (int j = 0; j < palette.size(); j++) {
-                CompoundTag blockEntry = palette.getCompound(j);
-                
+                        ListTag palette = blockStates.getList("palette", Tag.TAG_COMPOUND);
+                        
+                        for (int j = 0; j < palette.size(); j++) {
+                            CompoundTag blockEntry = palette.getCompound(j);
+                            
                 if (!blockEntry.contains("Name", Tag.TAG_STRING)) continue;
-                String blockName = blockEntry.getString("Name");
-                
+                                String blockName = blockEntry.getString("Name");
+                                
                 // Check if this blockName is in our missing blocks set or invalid
                 if (missingBlockIds.contains(blockName) || failSafeBlocks$isInvalidBlockId(blockName)) {
                     // Replace the block name with an appropriate placeholder
@@ -277,27 +277,27 @@ public class MixinChunkSerializer {
         try {
             if (!nbt.contains("sections", Tag.TAG_LIST)) return missingBlocks;
             
-            ListTag sections = nbt.getList("sections", Tag.TAG_COMPOUND);
-            
-            for (int i = 0; i < sections.size(); i++) {
-                CompoundTag section = sections.getCompound(i);
+                ListTag sections = nbt.getList("sections", Tag.TAG_COMPOUND);
                 
+                for (int i = 0; i < sections.size(); i++) {
+                    CompoundTag section = sections.getCompound(i);
+                    
                 if (!section.contains("block_states", Tag.TAG_COMPOUND)) continue;
-                CompoundTag blockStates = section.getCompound("block_states");
-                
+                        CompoundTag blockStates = section.getCompound("block_states");
+                        
                 if (!blockStates.contains("palette", Tag.TAG_LIST)) continue;
-                ListTag palette = blockStates.getList("palette", Tag.TAG_COMPOUND);
-                
-                for (int j = 0; j < palette.size(); j++) {
-                    CompoundTag blockEntry = palette.getCompound(j);
-                    
+                            ListTag palette = blockStates.getList("palette", Tag.TAG_COMPOUND);
+                            
+                            for (int j = 0; j < palette.size(); j++) {
+                                CompoundTag blockEntry = palette.getCompound(j);
+                                
                     if (!blockEntry.contains("Name", Tag.TAG_STRING)) continue;
-                    String blockName = blockEntry.getString("Name");
-                    
+                                    String blockName = blockEntry.getString("Name");
+                                    
                     // Check if this block exists in the registry
                     if (failSafeBlocks$isInvalidBlockId(blockName)) {
-                        missingBlocks.add(blockName);
-                        failSafeBlocks$LOGGER.debug("Found missing block reference in palette: {}", blockName);
+                                            missingBlocks.add(blockName);
+                                            failSafeBlocks$LOGGER.debug("Found missing block reference in palette: {}", blockName);
                     }
                 }
             }

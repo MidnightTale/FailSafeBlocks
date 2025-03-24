@@ -1,38 +1,22 @@
-# FailSafe Blocks
+# FailSafeBlocks
 
-FailSafe Blocks is a NeoForge mod that fixes the problem of missing blocks when you remove a mod.
+Fix your broken worlds! This mod replaces missing blocks with colorful placeholders instead of crashing.
 
-## Problem
+## What it does
 
-When you install a mod that adds new blocks and use those blocks in your world, then later remove that mod, Minecraft will remove those blocks from your world, leaving ugly holes.
+- Catches missing blocks when loading chunks and replaces them with colored placeholders
+- Uses 128 different colored placeholder blocks to help identify different missing blocks
+- Maps the same missing block ID to the same placeholder consistently
+- Works with any modded world - great for when you've uninstalled mods
 
-## Solution
+## How to use
 
-FailSafe Blocks uses mixins to intercept the chunk loading process. When a block is detected as missing (usually from a removed mod), instead of allowing it to disappear completely, FailSafe Blocks replaces it with a placeholder block. This keeps your structures intact even when mods are removed.
+1. Install the mod
+2. Load your world that has missing blocks
+3. The mod will automatically replace missing blocks with placeholders
+4. You can mine and replace the placeholders like normal blocks
 
-## Features
+## Notes
 
-- Replaces missing blocks with a visible placeholder block
-- Helps preserve the structure of your builds when mods are removed
-- Works seamlessly in the background
-- Compatible with most Minecraft mods
-
-## Configuration
-
-Currently, there are no configuration options. The mod simply works out of the box.
-
-## For Developers
-
-This mod uses Mixins to intercept the chunk loading process. The main components are:
-
-1. `MixinChunkSerializer` - Intercepts the chunk loading process to detect and replace missing blocks
-2. `MissingBlockTracker` - Utility class to detect invalid block states
-3. `ModBlocks` - Contains the placeholder block definition
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Credits
-
-Created by MidnightTale 
+- Each missing block type gets its own placeholder color (based on hash)
+- Safer than vanilla Minecraft which crashes or uses random blocks

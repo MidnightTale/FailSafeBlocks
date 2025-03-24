@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "all": "failsafeblocks:block/placeholder_block_124"
+  },
+  "parent": "minecraft:block/cube_all"
+}
